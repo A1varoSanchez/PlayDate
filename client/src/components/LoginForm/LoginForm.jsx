@@ -1,7 +1,10 @@
 const LoginForm = () => {
-<>
-<h1>Seguridad</h1>
-</>
+    return (
+    <>
+    <h1>Inicio-sesion</h1>
+    </>
+    )
+
 }
 
 export default LoginForm
