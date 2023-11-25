@@ -1,21 +1,19 @@
-
 import Navigation from './components/Navigation/Navigation'
 import AppRoutes from './routes/AppRoutes'
 
 function App() {
 
-
   return (
 
-      <div className='App'>
+    <div className='App'>
 
-        <Navigation />
+      <Navigation />
 
-        <AppRoutes />
+      <AppRoutes />
 
-        
-         
-      </div>
+
+
+    </div>
   )
 }
 
