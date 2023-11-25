@@ -27,7 +27,7 @@ const userSchema = new Schema(
         type: Date,
       },
     }],
-    family_type: {
+    familyType: {
       type: String,
     },
     photo: {
