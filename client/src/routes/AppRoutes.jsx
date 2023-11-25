@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import SignUp from '../components/SignupForm/SignupForm'
 
 
 
@@ -7,7 +8,8 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path={'/'} element={<p>EL INICIO</p>} />
-           
+            <Route path={'/registro'} element={<SignUp />} />
+
             
         
 
