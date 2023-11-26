@@ -10,32 +10,32 @@ const saltRounds = 10
 
 
 
-router.post('/signup',(req, res, next)=>{
+router.post('/signup', (req, res, next) => {
 
-    const { email, password, username, gender, birth, familyType, photo, friends, role }= req.body
+    const { email, password, username, gender, birth, familyType, photo, friends, role } = req.body
 
-    if(password.length < 2){
-        res.status(400).json({message: 'La contraseña debe tener mínimo dos caracteres.'})
-    return
+    if (password.length < 2) {
+        res.status(400).json({ message: 'La contraseña debe tener mínimo dos caracteres.' })
+        return
     }
 
     User
-    .findOne({email})
-    .then((foundUser)=>{
+        .findOne({ email })
+        .then((foundUser) => {
 
-        if(foundUser){
-            res.status(400).json({message:'Usuario ya existente.'})
-            return
-        }
+            if (foundUser) {
+                res.status(400).json({ message: 'Usuario ya existente.' })
+                return
+            }
 
-        const salt = bcrypt.genSaltSync(saltRounds)
-        const hashedPassword = bcrypt.hashSyn(password, salt)
+            const salt = bcrypt.genSaltSync(saltRounds)
+            const hashedPassword = bcrypt.hashSyn(password, salt)
 
-        return User.create({ email, password: hashedPassword, username, gender, birth, familyType, photo, friends, role })
-    })
+            return User.create({ email, password: hashedPassword, username, gender, birth, familyType, photo, friends, role })
+        })
 
-    .then(()=>res.sendStats(201))
-    .catch(err=>next(err))
+        .then(() => res.sendStats(201))
+        .catch(err => next(err))
 })
 
 router.post('/login', (req, res, next) => {
@@ -78,11 +78,11 @@ router.post('/login', (req, res, next) => {
         .catch(err => next(err));
 })
 
-    router.get('/verify', verifyToken, (req, res, next) => {
+router.get('/verify', verifyToken, (req, res, next) => {
 
-        const loggedUser = req.payload
+    const loggedUser = req.payload
 
-        res.json({ loggedUser })
-    })
+    res.json({ loggedUser })
+})
 
-    module.exports = router
+module.exports = router
