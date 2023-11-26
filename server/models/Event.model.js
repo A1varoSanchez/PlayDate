@@ -15,7 +15,7 @@ const eventSchema = new Schema(
             type: String,
             minlength: 0
         },
-        location: {                                           // atencion
+        location: {
             type: {
                 type: String
             },
@@ -28,8 +28,14 @@ const eventSchema = new Schema(
             enum: ['0-3', '3-6', '6-9', '2-5', '5-8', '8-11', '10-13'],
             required: [true, 'Selecciona rango de edad.']
         },
+        organizer: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         messages: [{
-            type: String,
+            text: {
+                type: String
+            },
             sender: {
                 type: Schema.Types.ObjectId,
                 ref: 'User'

@@ -1,8 +1,10 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthContext } from './../../contexts/auth.context'
+import { useContext } from 'react'
 
 const Navigation = () => {
-
+    const { loggedUser } = useContext(AuthContext)
     return (
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
             <Container>
@@ -16,8 +18,11 @@ const Navigation = () => {
                         <Link to={'/registro'} className='nav-link'>Registro</Link>
                         <Link to={'/eventos'} className='nav-link'>Eventos</Link>
                         <Link to={'/eventos/mapa'} className='nav-link'>Mapa</Link>
-                        <Link to={'/eventos-crear'} className='nav-link'>Crear evento</Link>
+                        <Link to={'/crear'} className='nav-link'>Crear evento</Link>
                     </Nav>
+                    <Navbar.Text className='Justify-content-end'>
+                        {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
+                    </Navbar.Text>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -14,6 +14,14 @@ router.post('/signup', (req, res, next) => {
 
     const { email, password, username, gender, birth, familyType, photo, friends, role } = req.body
 
+
+    const children = {
+        gender,
+        birth,
+
+    }
+
+
     if (password.length < 2) {
         res.status(400).json({ message: 'La contraseña debe tener mínimo dos caracteres.' })
         return
@@ -31,7 +39,7 @@ router.post('/signup', (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds)
             const hashedPassword = bcrypt.hashSync(password, salt)
 
-            return User.create({ email, password: hashedPassword, username, gender, birth, familyType, photo, friends, role })
+            return User.create({ email, password: hashedPassword, username, children, familyType, photo, friends, role })
         })
 
         .then(() => res.sendStatus(201))

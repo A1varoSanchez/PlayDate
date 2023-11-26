@@ -21,6 +21,7 @@ const userSchema = new Schema(
     },
     children: [{
       gender: {
+        type: String,
         enum: ['boy', 'girl']
       },
       birth: {
