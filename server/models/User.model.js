@@ -21,7 +21,7 @@ const userSchema = new Schema(
     },
     children: [{
       gender: {
-        enum: [boy, girl]
+        enum: ['boy', 'girl']
       },
       birth: {
         type: Date,
