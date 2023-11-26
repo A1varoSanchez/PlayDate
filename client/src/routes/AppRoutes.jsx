@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import SignUp from '../components/SignupForm/SignupForm'
+import SignUp from './../pages/SignupPage/SignupPage.jsx'
 
 
 
