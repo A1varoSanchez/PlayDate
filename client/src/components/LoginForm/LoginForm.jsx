@@ -13,7 +13,7 @@ const LoginForm = () => {
         password: ''
     })
 
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const authenticateUser = useContext(AuthContext)
 
@@ -31,6 +31,7 @@ const LoginForm = () => {
             .then(({ data }) => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
+                navigate('/')
 
             })
             .catch(err => console.log(err))
