@@ -30,7 +30,7 @@ const Navigation = () => {
                         loggedUser
                             ?
                             <>
-                            <Link to={'/perfil/:usuario_id'} className='nav-link'>Mi perfil</Link>
+                            <Link to={`/perfil/${loggedUser._id}`} className='nav-link'>Mi perfil</Link>
                             <span className='nav-link' onClick={logout}>Cerrar sesión</span>
                             </>
                             :

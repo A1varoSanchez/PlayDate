@@ -31,60 +31,60 @@ const NewEventForm = ({ eventFinal }) => {
         setEventData({ ...newData, [name]: value })
     }
 
-    const handleEventSubmit = e => {
+    // const handleEventSubmit = e => {
 
-        e.preventDefault()
-        console.log('-------------------------------------------------', newData)
-        eventServices
-            .createEvent(newData)
-            .then(() => {
-                eventFinal()
-            })
-            .catch(err => console.log(err))
-    }
+    e.preventDefault()
+    console.log('-------------------------------------------------', newData)
+    eventServices
+        .createEvent(newData)
+        .then(() => {
+            eventFinal()
+        })
+        .catch(err => console.log(err))
+}
 
-    return (
-        <div >
-            <Form onSubmit={handleEventSubmit}>
-                <Form.Group className="mb-3" controlId='name'>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
-                </Form.Group>
+return (
+    <div >
+        <Form onSubmit={handleEventSubmit}>
+            <Form.Group className="mb-3" controlId='name'>
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
+            </Form.Group>
 
-                <Form.Group className="mb-3" controlId='description'>
-                    <Form.Label>Descripción</Form.Label>
-                    <Form.Control type="text" name="description" value={newData.description} onChange={handleInputChange} />
-                </Form.Group>
+            <Form.Group className="mb-3" controlId='description'>
+                <Form.Label>Descripción</Form.Label>
+                <Form.Control type="text" name="description" value={newData.description} onChange={handleInputChange} />
+            </Form.Group>
 
-                <Row>
-                    <Col>
-                        <Form.Group className="mb-3" controlId='type'>
-                            <Form.Label>Tipo</Form.Label>
-                            <Form.Control type="type" name="type" value={newData.type} onChange={handleInputChange} />
-                        </Form.Group>
-                    </Col>
-                    {/* <Col>
+            <Row>
+                <Col>
+                    <Form.Group className="mb-3" controlId='type'>
+                        <Form.Label>Tipo</Form.Label>
+                        <Form.Control type="type" name="type" value={newData.type} onChange={handleInputChange} />
+                    </Form.Group>
+                </Col>
+                {/* <Col>
                         <Form.Group className="mb-3" controlId='location'>
                             <Form.Label>Lugar</Form.Label>
                             <Form.Control type="text" name="location" value={newData.location} onChange={handleInputChange} />
                         </Form.Group>
                     </Col> */}
 
-                    {/* <Col>
+                {/* <Col>
                         <Form.Group className="mb-3" controlId='ageGroup'>
                             <Form.Label>Edad Recomendada</Form.Label>
                             <Form.Control type="number" name="ageGroup" value={newData.ageGroup} onChange={handleInputChange} />
                         </Form.Group>
                     </Col> */}
 
-                </Row>
+            </Row>
 
-                <div className="d-grid">
-                    <Button variant="dark" type="submit">Crear nuevo evento</Button>
-                </div>
-            </Form>
-        </div>
-    )
+            <div className="d-grid">
+                <Button variant="dark" type="submit">Crear nuevo evento</Button>
+            </div>
+        </Form>
+    </div>
+)
 }
 
 
