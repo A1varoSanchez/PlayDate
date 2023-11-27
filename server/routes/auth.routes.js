@@ -84,5 +84,12 @@ router.get('/verify', verifyToken, (req, res, next) => {
     res.json({ loggedUser })
 })
 
+router.get('/perfil/:id', (req, res, next) => {
+
+    const {_id : owner} = req.session.currentUser
+    
+    
+})
+
 
 module.exports = router
