@@ -23,7 +23,7 @@ Base URL `/auth`
 |-------------|------------------|-------------------|
 | POST        | `/signup`        | Signup user       |✅✅✅✅
 | POST        | `/login`         | Login user        |
-| PUT         | `/ueditUser/:id` | Edit user         |
+| PUT         | `/editUser/:id`  | Edit user         |
 | GET         | `/verify`        | Verify Auth token |
 
 
@@ -36,11 +36,11 @@ Client routes
 | `/eventos`                     | Lista de eventos |           |
 | `/eventos/mapa`                | Mapa de eventos  |           |
 | `/eventos/crear`               | crear eventos    |   User    |
-| `/eventos/editar/:evento_id`   | Editar evento    |           |
-| `/eventos/detalles/:evento_id` | Detalles evento  |           |
-| `/perfil/:usuario_id`          | Detalles usuario |           |
-| `/incio-sesion`                | Iniciar sesion   |           |
+| `/eventos/editar/:evento_id`   | Editar evento    |   User    |
+| `/eventos/detalles/:evento_id` | Detalles evento  |   User    |
+| `/perfil/:usuario_id`          | Detalles usuario |   User    |
+| `/inicio-sesion`               | Iniciar sesion   |           |
 | `/registro`                    | Registro         |           |
-| `/listado/usuarios`            | lista usuarios   |           |
+| `/listado/usuarios`            | lista usuarios   |   ADMIN   |
 
 
