@@ -3,7 +3,7 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <footer>
+        <footer >
             Todos los derechos reservados - Chalby®
         </footer>
     )

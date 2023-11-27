@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
 import logo from './../../assets/playdate-logo.png'
+import logo from './../../assets/playdate-logo.png'
 
 const Navigation = () => {
-    const { loggedUser } = useContext(AuthContext)
+    const { loggedUser, logout } = useContext(AuthContext)
     return (
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
 
@@ -23,12 +24,26 @@ const Navigation = () => {
                 <Nav className="me-auto">
                     <Link to={'/'} className='nav-link'>Inicio</Link>
                     <Link to={'/perfil/:usuario_id'} className='nav-link'>Mi perfil</Link>
-                    <Link to={'/inicio-sesion'} className='nav-link'>Inicio sesión</Link>
-                    <Link to={'/registro'} className='nav-link'>Registro</Link>
                     <Link to={'/eventos'} className='nav-link'>Eventos</Link>
                     <Link to={'/eventos/mapa'} className='nav-link'>Mapa</Link>
                     <Link to={'/eventos-crear'} className='nav-link'>Crear evento</Link>
+                    {
+                        loggedUser
+                            ?
+                            <>
+                                <span className='nav-link' onClick={logout}>Cerrar sesión</span>
+                            </>
+                            :
+                            <>
+                                <Link to={'/inicio-sesion'} className='nav-link'>Inicio sesión</Link>
+                                <Link to={'/registro'} className='nav-link'>Registro</Link>
+                            </>
+                    }
+
                 </Nav>
+                <Navbar.Text className='justify-content-end'>
+                    {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
+                </Navbar.Text>
             </Navbar.Collapse>
 
         </Navbar>
