@@ -12,29 +12,28 @@ const NewEventForm = ({ eventFinal }) => {
         name: '',
         type: 'popino',
         description: '',
-        location: '',//{ type: 'point', coordinate: [longitude, latitude] },
+        location: [{
+            type: {
+                type: String
+            },
+            coordinates: {
+                type: [Number]
+            }
+        }],
         ageGroup: 3 - 6,
-        organizer: ''
+        organizer: loggedUser._id
     })
 
-    useEffect(() => {
-        if (loggedUser && loggedUser._id) {
-            setEventData(prevData => ({
-                ...prevData,
-                organizer: loggedUser._id
-            }));
-        }
-    }, [loggedUser])
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
         setEventData({ ...newData, [name]: value })
     }
 
-    // const handleEventSubmit = e => {
+     const handleEventSubmit = e => {
 
     e.preventDefault()
-    console.log('-------------------------------------------------', newData)
+    
     eventServices
         .createEvent(newData)
         .then(() => {
