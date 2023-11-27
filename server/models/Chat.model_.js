@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose")
 
-
 const chatSchema = new Schema(
     {
         participants: [{
@@ -8,16 +7,14 @@ const chatSchema = new Schema(
             ref: 'User'
         }],
         messages: [{
-            type: String,
+            content: {
+                type: String
+            },
             sender: {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             },
         }],
-        sender: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
     },
     {
         timestamps: true
