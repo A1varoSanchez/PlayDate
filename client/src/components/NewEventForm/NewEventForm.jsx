@@ -88,5 +88,4 @@ const NewEventForm = ({ eventFinal }) => {
 }
 
 
-
 export default NewEventForm

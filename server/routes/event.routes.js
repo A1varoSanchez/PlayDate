@@ -14,4 +14,3 @@ router.post('/event/create', (req, res, next) => {
 
 
 module.exports = router
-
