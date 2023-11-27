@@ -10,10 +10,6 @@ const SignupForm = () => {
         email: '',
         password: '',
         // children: { type: '', gender }
-
-
-
-
     })
 
     const handleInputChange = e => {

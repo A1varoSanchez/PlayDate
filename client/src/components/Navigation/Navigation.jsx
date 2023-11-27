@@ -2,7 +2,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
-import  logo  from './../../assets/playdate-logo.png'
+import logo from './../../assets/playdate-logo.png'
 
 const Navigation = () => {
     const { loggedUser, logout } = useContext(AuthContext)
@@ -35,11 +35,11 @@ const Navigation = () => {
                             </>
                             :
                             <>
-                            <Link to={'/inicio-sesion'} className='nav-link'>Inicio sesión</Link>
-                            <Link to={'/registro'} className='nav-link'>Registro</Link>
+                                <Link to={'/inicio-sesion'} className='nav-link'>Inicio sesión</Link>
+                                <Link to={'/registro'} className='nav-link'>Registro</Link>
                             </>
                     }
-                    
+
                 </Nav>
                 <Navbar.Text className='justify-content-end'>
                     {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
