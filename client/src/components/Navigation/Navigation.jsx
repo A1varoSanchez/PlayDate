@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext } from 'react'
 import logo from './../../assets/playdate-logo.png'
-import logo from './../../assets/playdate-logo.png'
 
 const Navigation = () => {
     const { loggedUser, logout } = useContext(AuthContext)
