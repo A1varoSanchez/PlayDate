@@ -9,11 +9,11 @@ const eventSchema = new Schema(
         },
         type: {
             type: String,
-            required: [true, 'El tipo es obligatorio.']
+            enum: ['Aire libre', 'Cultura', 'Otros', 'Parques', 'Cumpleaños', 'Deportes', 'Música', 'Talleres']
         },
         description: {
             type: String,
-            minlength: 0
+            minlength: [10, 'La descripción requiere un mínimo de 10 caracteres']
         },
         location: {
             type: {

@@ -4,8 +4,6 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/auth.context'
 
 
-
-
 const NewEventForm = () => {
 
     const { loggedUser } = useContext(AuthContext)
@@ -38,7 +36,7 @@ const NewEventForm = () => {
         e.preventDefault()
 
 
-        const eventData
+        // const eventData
 
         eventServices
             .createEvent(createEvent)
@@ -47,6 +45,7 @@ const NewEventForm = () => {
 
             })
     }
+
     return (
         <div >
             <Form >
@@ -95,7 +94,6 @@ const NewEventForm = () => {
         </div>
     )
 }
-
 
 
 export default NewEventForm

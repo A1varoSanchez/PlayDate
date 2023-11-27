@@ -28,15 +28,16 @@ const userSchema = new Schema(
         type: Date,
       },
     }],
-    familyType: {
+    aboutUs: {
       type: String,
     },
     photo: {
       type: String
     },
-    friends: {
-      type: Array
-    },
+    friends: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }],
     role: {
       type: String,
       enum: ['USER', 'ADMIN'],
@@ -47,7 +48,6 @@ const userSchema = new Schema(
     timestamps: true
   }
 )
-
 
 const User = model("User", userSchema)
 
