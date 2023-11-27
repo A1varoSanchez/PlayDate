@@ -8,8 +8,8 @@ class EventService {
         })
     }
 
-    createEvent() {
-        return this.api.post(`/create`)
+    createEvent(eventData) {
+        return this.api.post(`/event/create`, eventData)
     }
 }
 

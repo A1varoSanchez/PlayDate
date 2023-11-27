@@ -4,88 +4,79 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/auth.context'
 
 
-
-
-const NewEventForm = () => {
+const NewEventForm = ({ eventFinal }) => {
 
     const { loggedUser } = useContext(AuthContext)
 
-    const [newtData, setEventData] = useState({
+    const [newData, setEventData] = useState({
         name: '',
-        type: '',
+        type: 'popino',
         description: '',
         location: '',//{ type: 'point', coordinate: [longitude, latitude] },
-        ageGroup: '',
-        organizer: loggedUser?._id
+        ageGroup: 3 - 6,
+        organizer: ''
     })
 
-
-    console.log(loggedUser)
-
-    // const handleInputChange = e => {
-    //     const { value, name } = e.currentTarget
-    //     setCoasterData({ ...coasterData, [name]: value })   --------esto ejemplo
-    //}
-
+    useEffect(() => {
+        if (loggedUser && loggedUser._id) {
+            setEventData(prevData => ({
+                ...prevData,
+                organizer: loggedUser._id
+            }));
+        }
+    }, [loggedUser])
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
-        setEventData({ ...newtData, [name]: value })
+        setEventData({ ...newData, [name]: value })
     }
 
     const handleEventSubmit = e => {
 
         e.preventDefault()
-
-
-        const eventData
-
+        console.log('-------------------------------------------------', newData)
         eventServices
-            .createEvent(createEvent)
+            .createEvent(newData)
             .then(() => {
-                response => con
-
+                eventFinal()
             })
+            .catch(err => console.log(err))
     }
+
     return (
         <div >
-            <Form >
+            <Form onSubmit={handleEventSubmit}>
                 <Form.Group className="mb-3" controlId='name'>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name="name" value={newtData.name} />
+                    <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId='description'>
                     <Form.Label>Descripción</Form.Label>
-                    <Form.Control type="text" name="description" value={newtData.description} />
+                    <Form.Control type="text" name="description" value={newData.description} onChange={handleInputChange} />
                 </Form.Group>
 
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId='type'>
                             <Form.Label>Tipo</Form.Label>
-                            <Form.Control type="type" name="type" value={newtData.type} />
+                            <Form.Control type="type" name="type" value={newData.type} onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
-                    <Col>
+                    {/* <Col>
                         <Form.Group className="mb-3" controlId='location'>
                             <Form.Label>Lugar</Form.Label>
-                            <Form.Control type="text" name="location" value={newtData.location} />
+                            <Form.Control type="text" name="location" value={newData.location} onChange={handleInputChange} />
                         </Form.Group>
-                    </Col>
+                    </Col> */}
 
-                    <Col>
+                    {/* <Col>
                         <Form.Group className="mb-3" controlId='ageGroup'>
                             <Form.Label>Edad Recomendada</Form.Label>
-                            <Form.Control type="number" name="ageGroup" value={newtData.ageGroup} />
+                            <Form.Control type="number" name="ageGroup" value={newData.ageGroup} onChange={handleInputChange} />
                         </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group className="mb-3" controlId='organizer'>
-                            <Form.Label>Edad Recomendada</Form.Label>
-                            <Form.Control type="number" name="organizer" value={newtData.organizer} />
-                        </Form.Group>
-                    </Col>
+                    </Col> */}
+
                 </Row>
 
                 <div className="d-grid">
