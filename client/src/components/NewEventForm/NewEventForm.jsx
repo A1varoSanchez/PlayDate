@@ -33,20 +33,20 @@ const NewEventForm = () => {
         setEventData({ ...newtData, [name]: value })
     }
 
-    const handleEventSubmit = e => {
+    // const handleEventSubmit = e => {
 
-        e.preventDefault()
+    //     e.preventDefault()
 
 
-        const eventData
+    //     const eventData
 
-        eventServices
-            .createEvent(createEvent)
-            .then(() => {
-                response => con
+    //     eventServices
+    //         .createEvent(createEvent)
+    //         .then(() => {
+    //             response => con
 
-            })
-    }
+    //         })
+    //}
     return (
         <div >
             <Form >
