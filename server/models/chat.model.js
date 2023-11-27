@@ -13,13 +13,11 @@ const chatSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             },
-
         }],
         sender: {
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-
     },
     {
         timestamps: true

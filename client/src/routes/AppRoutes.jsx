@@ -4,7 +4,6 @@ import NewEventPage from './../pages/NewEventPage/NewEventPage.jsx'
 import LoginPage from './../pages/LoginPage/LoginPage.jsx'
 
 
-
 const AppRoutes = () => {
 
     return (

@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { AuthProviderWrapper } from './contexts/auth.context.jsx'
 
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProviderWrapper>
     <Router>

@@ -21,8 +21,8 @@ class AuthService {
             { headers: { Authorization: `Bearer ${authToken}` } }
         )
     }
-
 }
+
 
 const authService = new AuthService()
 

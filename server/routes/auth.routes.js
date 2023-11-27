@@ -8,19 +8,12 @@ const { verifyToken } = require("../middlewares/verifyToken")
 const saltRounds = 10
 
 
-
-
 router.post('/signup', (req, res, next) => {
-
     const { email, password, username, gender, birth, familyType, photo, friends, role } = req.body
-
-
     const children = {
         gender,
         birth,
-
     }
-
 
     if (password.length < 2) {
         res.status(400).json({ message: 'La contraseña debe tener mínimo dos caracteres.' })
@@ -47,7 +40,6 @@ router.post('/signup', (req, res, next) => {
 })
 
 router.post('/login', (req, res, next) => {
-
     const { email, password } = req.body
 
     if (email === '' || password === '') {
@@ -74,23 +66,21 @@ router.post('/login', (req, res, next) => {
                     process.env.TOKEN_SECRET,
                     { algorithm: 'HS256', expiresIn: "6h" }
                 )
-
                 res.json({ authToken })
 
             }
             else {
                 res.status(401).json({ message: "Incorrect password" });
             }
-
         })
         .catch(err => next(err));
 })
 
 router.get('/verify', verifyToken, (req, res, next) => {
-
     const loggedUser = req.payload
 
     res.json({ loggedUser })
 })
+
 
 module.exports = router

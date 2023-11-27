@@ -1,11 +1,14 @@
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import eventServices from '../../services/event.services'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../contexts/auth.context'
 
 
 
 
 const NewEventForm = () => {
+
+    const { loggedUser } = useContext(AuthContext)
 
     const [newtData, setEventData] = useState({
         name: '',
@@ -13,37 +16,37 @@ const NewEventForm = () => {
         description: '',
         location: '',//{ type: 'point', coordinate: [longitude, latitude] },
         ageGroup: '',
-        organizer: ''
+        organizer: loggedUser?._id
     })
 
-    const [user, setUser] = useState({})
+
+    console.log(loggedUser)
 
     // const handleInputChange = e => {
     //     const { value, name } = e.currentTarget
     //     setCoasterData({ ...coasterData, [name]: value })   --------esto ejemplo
-    // }
-
-    // const loginUser = () => { }
-
-    // const handleInputChange = e => {
+    //}
 
 
+    const handleInputChange = e => {
+        const { value, name } = e.currentTarget
+        setEventData({ ...newtData, [name]: value })
+    }
 
-    // }
+    const handleEventSubmit = e => {
 
-    // const handleEventSubmit = e => {
+        e.preventDefault()
 
-    //     e.preventDefault()
 
-    //     const userId = user._id
-    //     const eventData = { ...newtData, organizer: userId }
+        const eventData
 
-    //     eventServices
-    //         .create(eventData)
-    //         .then(() => {response=> con
+        eventServices
+            .createEvent(createEvent)
+            .then(() => {
+                response => con
 
-    //         })
-    // }
+            })
+    }
     return (
         <div >
             <Form >
@@ -75,6 +78,12 @@ const NewEventForm = () => {
                         <Form.Group className="mb-3" controlId='ageGroup'>
                             <Form.Label>Edad Recomendada</Form.Label>
                             <Form.Control type="number" name="ageGroup" value={newtData.ageGroup} />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId='organizer'>
+                            <Form.Label>Edad Recomendada</Form.Label>
+                            <Form.Control type="number" name="organizer" value={newtData.organizer} />
                         </Form.Group>
                     </Col>
                 </Row>

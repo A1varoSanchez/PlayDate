@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 class EventService {
     constructor() {
         this.api = axios.create({
@@ -7,10 +8,12 @@ class EventService {
         })
     }
 
-    saveEvent(event, user) {
-        return this.api.post(`/Create`, { event, user })
+    createEvent() {
+        return this.api.post(`/create`)
     }
 }
+
+
 const eventServices = new EventService()
 
 export default eventServices
