@@ -9,6 +9,10 @@ const Profile = () => {
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <h1>{loggedUser.username}</h1>
+                    <h2><b>Mi familia:</b>
+                    </h2>
+                    <h2><b>Hijos:</b>
+                    </h2>
                     <hr />
                     
                 </Col>
