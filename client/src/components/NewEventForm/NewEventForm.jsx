@@ -31,18 +31,18 @@ const NewEventForm = ({ eventFinal }) => {
         setEventData({ ...newData, [name]: value })
     }
 
-    // const handleEventSubmit = e => {
+    const handleEventSubmit = e => {
 
-    e.preventDefault()
-    console.log('-------------------------------------------------', newData)
-    eventServices
-        .createEvent(newData)
-        .then(() => {
-            eventFinal()
-        })
-        .catch(err => console.log(err))
+        e.preventDefault()
 
+        eventServices
+            .createEvent(newData)
+            .then(() => {
+                eventFinal()
+            })
+            .catch(err => console.log(err))
 
+    }
     return (
         <div >
             <Form onSubmit={handleEventSubmit}>
@@ -86,6 +86,7 @@ const NewEventForm = ({ eventFinal }) => {
         </div>
     )
 }
+
 
 
 export default NewEventForm
