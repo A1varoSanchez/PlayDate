@@ -46,11 +46,11 @@ const NewEventForm = ({ eventFinal }) => {
         <div >
             <Form onSubmit={handleEventSubmit}>
                 <Form.Group className="mb-3" controlId='name'>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Nombre</Form.Label>
                     <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
                 </Form.Group>
 
-                <Form.Select className="mb-3" aria-label="Default select example">
+                <Form.Select className="mb-3" aria-label="Default select example" controlId='type'>
                     <option>Tipo de evento</option>
                     <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Música</option>
                     <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Cultura</option>
@@ -71,12 +71,12 @@ const NewEventForm = ({ eventFinal }) => {
 
                 <Row>
 
-                    <Col>
+                    {/* <Col>
                         <Form.Group className="mb-3" controlId='type'>
                             <Form.Label>Tipo</Form.Label>
                             <Form.Control type="type" name="type" value={newData.type} onChange={handleInputChange} />
                         </Form.Group>
-                    </Col>
+                    </Col> */}
                     {/* <Col>
                         <Form.Group className="mb-3" controlId='location'>
                             <Form.Label>Lugar</Form.Label>
@@ -100,20 +100,6 @@ const NewEventForm = ({ eventFinal }) => {
         </div>
     )
 }
-// name: '',
-//     type: '',
-//         description: '',
-//             location: [{
-//                 type: {
-//                     type: String
-//                 },
-//                 coordinates: {
-//                     type: [Number]
-//                 }
-//             }],
-//                 ageGroup: '',
-//                     organizer: loggedUser._id
-//     })
 
 
 export default NewEventForm
