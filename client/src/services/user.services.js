@@ -1,10 +1,11 @@
 import axios from 'axios'
 
 
-class EventService {
+class UserService {
+
     constructor() {
         this.api = axios.create({
-            baseURL: `${import.meta.env.VITE_API_URL}/event`
+            baseURL: `${import.meta.env.VITE_API_URL}/user`
         })
         this.api.interceptors.request.use((config) => {
 
@@ -13,23 +14,15 @@ class EventService {
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-
             return config
         })
-
     }
 
-
-    getEvents() {
-        return this.api.get('/getAllEvents')
-    }
-
-    createEvent(eventData) {
-        return this.api.post(`/create`, eventData)
+    addChild() {
+        return this.api.post(`/addchild`,)
     }
 }
 
+const userservices = new UserService()
 
-const eventServices = new EventService()
-
-export default eventServices
+export default userservices

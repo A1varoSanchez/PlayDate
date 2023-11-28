@@ -13,6 +13,11 @@ const saltRounds = 10
 
 router.post('/signup', (req, res, next) => {
     const { username, email, password, aboutUs } = req.body
+    // const children = {
+    //     gender,
+    //     birth,
+    // }
+
 
     if (password.length < 2) {
         res.status(400).json({ message: 'La contraseña debe tener mínimo dos caracteres.' })
