@@ -23,11 +23,15 @@ const eventSchema = new Schema(
                 type: [Number]
             }
         },
-        // ageGroup: {
-        //     type: Number,
-        //     enum: ['0-3', '3-6', '6-9', '2-5', '5-8', '8-11', '10-13'],
-        //     required: [true, 'Selecciona rango de edad.']
-        // },
+        ageGroup: {
+            type: String,
+            enum: ['0-3', '3-6', '6-9', '2-5', '5-8', '8-11', '10-13', 'all'],
+            required: [true, 'Selecciona rango de edad recomendado.']
+        },
+        participants: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         organizer: {
             type: Schema.Types.ObjectId,
             ref: 'User'

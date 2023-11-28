@@ -7,16 +7,15 @@ class AuthService {
             baseURL: `${import.meta.env.VITE_API_URL}/auth`
         })
         this.api.interceptors.request.use((config) => {
- 
+
             const storedToken = localStorage.getItem("authToken");
-         
+
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-         
+
             return config
         })
-        
     }
 
     signup(userData) {
@@ -33,8 +32,8 @@ class AuthService {
         )
     }
 
-    findUser(_id){
-    return this.api.get(`/perfil/${_id}`)
+    findUser(_id) {
+        return this.api.get(`/perfil/${_id}`)
     }
 }
 

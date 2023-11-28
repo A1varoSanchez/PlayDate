@@ -24,8 +24,8 @@ const userSchema = new Schema(
         type: String,
         enum: ['boy', 'girl']
       },
-      birth: {
-        type: Date,
+      birthday: {
+        type: String,
       },
     }],
     aboutUs: {
