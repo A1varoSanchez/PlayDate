@@ -38,6 +38,11 @@ const SignupForm = () => {
 
         <Form onSubmit={handleFormSubmit}>
 
+            <Form.Group className="mb-3" controlId="username">
+                <Form.Label>Nombre de usuario*</Form.Label>
+                <Form.Control type="text" value={signupData.username} onChange={handleInputChange} name="username" />
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email*</Form.Label>
                 <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
@@ -48,9 +53,15 @@ const SignupForm = () => {
                 <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="username">
-                <Form.Label>Nombre de usuario*</Form.Label>
-                <Form.Control type="text" value={signupData.username} onChange={handleInputChange} name="username" />
+            <Form.Group className="mb-3" controlId="aboutUs">
+                <Form.Label>Bio</Form.Label>
+                <Form.Control 
+                as="textarea" 
+                rows={3} 
+                value={signupData.aboutUs} 
+                onChange={handleInputChange} 
+                name="aboutUs"
+                placeholder="Cuéntanos un poco sobre tu familia :)" />
             </Form.Group>
 
             <div className="d-grid">

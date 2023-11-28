@@ -8,9 +8,16 @@ const { verifyToken } = require("../middlewares/verifyToken")
 const saltRounds = 10
 
 
+
+
+
 router.post('/signup', (req, res, next) => {
     const { username, email, password, aboutUs } = req.body
+<<<<<<< HEAD
 
+=======
+    console.log("----------------------------------", username, email, password, aboutUs)
+>>>>>>> 749612d2632705c7322f82145f72d7e387583060
     // const children = {
     //     gender,
     //     birth,
@@ -84,7 +91,17 @@ router.get('/verify', verifyToken, (req, res, next) => {
     res.json({ loggedUser })
 })
 
+router.get('/perfil/:id', verifyToken, (req, res, next) => {
 
+    const { _id } = req.payload
+
+    User
+        .findById(_id)
+        .then(response => res.json(response))
+        .catch(err => next(err))
+
+
+})
 
 
 module.exports = router
