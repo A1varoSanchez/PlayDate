@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import { useParams } from "react-router-dom"
 import userservices from "../../services/user.services"
@@ -12,11 +12,10 @@ const AddChildForm = () => {
 
     const [addChild, setAddChild] = useState({
         children: [{
-            gender: '',
-            birth: ''
+            gender: 'boy',
+            birth: '01-01-2021'
         }],
     })
-    console.log('---------------------------------', addChild)
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
@@ -42,10 +41,11 @@ const AddChildForm = () => {
         <Form onSubmit={handleEventSubmit}>
             <Form.Group className="mb-3" controlId="birthday">
                 <Form.Label>Fecha de nacimiento</Form.Label>
-                <Form.Control type="text" name="birthday" value={addChild.children.birthday} onChange={handleInputChange} />
+                <Form.Control type="date" name="birthday" value={addChild.children.birthday} onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={addChild.children.gender} onChange={handleInputChange}>
+                <option type="text">Selecciona género</option>
                 <option type="text" value="boy">Niño</option>
                 <option type="text" value="girl">Niña</option>
             </Form.Select>
