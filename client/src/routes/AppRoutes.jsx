@@ -5,6 +5,7 @@ import LoginPage from './../pages/LoginPage/LoginPage.jsx'
 import Profile from './../pages/Profile/Profile.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
 import EventsPage from './../pages/EventsPage/EventsPage.jsx'
+import EventDetailsPage from './../pages/EventDetailsPage/EventDetailsPage.jsx'
 
 const AppRoutes = () => {
 
@@ -16,6 +17,7 @@ const AppRoutes = () => {
             <Route path={'/inicio-sesion'} element={<LoginPage />} />
 
             <Route path={'/eventos'} element={<EventsPage />} />
+            <Route path={'/eventos/:event_id'} element={<EventDetailsPage />} />
             <Route path={'/mapa'} element={<h1>El mapa</h1>} />
 
             <Route element={<PrivateRoute />}>

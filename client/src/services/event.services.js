@@ -19,13 +19,15 @@ class EventService {
 
     }
 
-
     getEvents() {
         return this.api.get('/getAllEvents')
     }
 
+    getEventDetails(event_id) {
+        return this.api.get(`/getOneEvent/${event_id}`)
+    }
+
     createEvent(eventData) {
-        console.log("voy a crear un nuevo evento con estos datos:", eventData)
         return this.api.post(`/create`, eventData)
 
     }

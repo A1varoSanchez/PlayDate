@@ -34,15 +34,13 @@ const NewEventForm = () => {
     const navigate = useNavigate()
 
     const handleEventSubmit = e => {
-        console.log("helloooo")
+
         e.preventDefault()
 
         eventServices
             .createEvent(newData)
-            .then(() => {
-                navigate('/')
-            })
-            .catch(err => console.error('Error creating event:', err))
+            .then(() => navigate('/eventos'))
+            .catch(err => console.error(err))
 
 
     }
