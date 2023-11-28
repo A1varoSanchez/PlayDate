@@ -10,8 +10,8 @@ const SignupForm = () => {
         email: '',
         password: '',
         children: [{
-            gender:'',
-            birth:{type:Date}
+            gender: '',
+            birth: { type: Date }
         }],
         aboutUs: '',
         photo: '',
@@ -55,13 +55,13 @@ const SignupForm = () => {
 
             <Form.Group className="mb-3" controlId="aboutUs">
                 <Form.Label>Bio</Form.Label>
-                <Form.Control 
-                as="textarea" 
-                rows={3} 
-                value={signupData.aboutUs} 
-                onChange={handleInputChange} 
-                name="aboutUs"
-                placeholder="Cuéntanos un poco sobre tu familia :)" />
+                <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={signupData.aboutUs}
+                    onChange={handleInputChange}
+                    name="aboutUs"
+                    placeholder="Cuéntanos un poco sobre tu familia :)" />
             </Form.Group>
 
             <div className="d-grid">
