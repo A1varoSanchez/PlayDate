@@ -11,11 +11,12 @@ const AddChildForm = () => {
     const { _id } = useParams()
 
     const [addChild, setAddChild] = useState({
-        children: {
-            gender: "",
-            birthday: ""
-        }
+        children: [{
+            gender: '',
+            birth: ''
+        }],
     })
+    console.log('---------------------------------', addChild)
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
@@ -41,7 +42,7 @@ const AddChildForm = () => {
         <Form onSubmit={handleEventSubmit}>
             <Form.Group className="mb-3" controlId="birthday">
                 <Form.Label>Fecha de nacimiento</Form.Label>
-                <Form.Control type="text" name="date" value={addChild.children.birthday} onChange={handleInputChange} />
+                <Form.Control type="text" name="birthday" value={addChild.children.birthday} onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={addChild.children.gender} onChange={handleInputChange}>

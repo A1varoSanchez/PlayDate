@@ -18,8 +18,8 @@ class UserService {
         })
     }
 
-    addChild() {
-        return this.api.post(`/addchild`,)
+    addChild(children) {
+        return this.api.post(`/addchild`, children)
     }
 }
 
