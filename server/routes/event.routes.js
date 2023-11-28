@@ -16,7 +16,7 @@ router.post('/create', verifyToken, (req, res, next) => {
 
     Event
         .create({ name, type, description, location, ageGroup, messages, organizer })
-        .then(() => res.status(200))
+        .then(() => res.sendStatus(200))
         .catch(err => console.log(err))
 })
 
@@ -34,3 +34,5 @@ router.get('/getAllEvents', (req, res, next) => {
 
 
 module.exports = router
+
+

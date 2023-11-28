@@ -25,7 +25,9 @@ class EventService {
     }
 
     createEvent(eventData) {
+        console.log("voy a crear un nuevo evento con estos datos:", eventData)
         return this.api.post(`/create`, eventData)
+
     }
 }
 

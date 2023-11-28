@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/auth.context'
 import { useNavigate } from 'react-router-dom'
 
 
-const NewEventForm = ({ eventFinal }) => {
+const NewEventForm = () => {
 
     const { loggedUser } = useContext(AuthContext)
 
@@ -24,32 +24,33 @@ const NewEventForm = ({ eventFinal }) => {
         ageGroup: 'all',
 
     })
-    const navigate = useNavigate()
+
 
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
         setEventData({ ...newData, [name]: value })
     }
+    const navigate = useNavigate()
 
     const handleEventSubmit = e => {
-
+        console.log("helloooo")
         e.preventDefault()
 
         eventServices
             .createEvent(newData)
             .then(() => {
-                eventFinal()
                 navigate('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error('Error creating event:', err))
+
 
     }
     return (
         <div >
             <Form onSubmit={handleEventSubmit}>
                 <Form.Group className="mb-3" controlId='name'>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
                 </Form.Group>
 
@@ -109,6 +110,20 @@ const NewEventForm = ({ eventFinal }) => {
         </div>
     )
 }
+// name: '',
+//     type: '',
+//         description: '',
+//             location: [{
+//                 type: {
+//                     type: String
+//                 },
+//                 coordinates: {
+//                     type: [Number]
+//                 }
+//             }],
+//                 ageGroup: '',
+//                     organizer: loggedUser._id
+//     })
 
 
 export default NewEventForm
