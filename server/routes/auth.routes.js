@@ -9,8 +9,8 @@ const saltRounds = 10
 
 
 router.post('/signup', (req, res, next) => {
-    const {username, email, password, aboutUs  } = req.body
-console.log( "----------------------------------", username, email, password, aboutUs)
+    const { username, email, password, aboutUs } = req.body
+
     // const children = {
     //     gender,
     //     birth,
@@ -60,7 +60,7 @@ router.post('/login', (req, res, next) => {
 
             if (bcrypt.compareSync(password, foundUser.password)) {
 
-                const { _id, email, username } = foundUser;
+                const { _id, email, username } = foundUser
                 const payload = { _id, email, username }
 
                 const authToken = jwt.sign(
@@ -72,10 +72,10 @@ router.post('/login', (req, res, next) => {
 
             }
             else {
-                res.status(401).json({ message: "Incorrect password" });
+                res.status(401).json({ message: "Incorrect password" })
             }
         })
-        .catch(err => next(err));
+        .catch(err => next(err))
 })
 
 router.get('/verify', verifyToken, (req, res, next) => {
@@ -84,12 +84,7 @@ router.get('/verify', verifyToken, (req, res, next) => {
     res.json({ loggedUser })
 })
 
-router.get('/perfil/:id', (req, res, next) => {
 
-    const {_id : owner} = req.session.currentUser
-    
-    
-})
 
 
 module.exports = router

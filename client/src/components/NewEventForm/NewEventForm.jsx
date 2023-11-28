@@ -10,7 +10,7 @@ const NewEventForm = ({ eventFinal }) => {
 
     const [newData, setEventData] = useState({
         name: '',
-        type: 'popino',
+        type: '',
         description: '',
         location: [{
             type: {
@@ -20,7 +20,7 @@ const NewEventForm = ({ eventFinal }) => {
                 type: [Number]
             }
         }],
-        ageGroup: 3 - 6,
+        ageGroup: '',
         organizer: loggedUser._id
     })
 
@@ -50,12 +50,27 @@ const NewEventForm = ({ eventFinal }) => {
                     <Form.Control type="text" name="name" value={newData.name} onChange={handleInputChange} />
                 </Form.Group>
 
+                <Form.Select className="mb-3" aria-label="Default select example">
+                    <option>Tipo de evento</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Música</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Cultura</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Aire libre</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Deportes</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Cumpleaños</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Parques</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Talleres</option>
+                    <option type="text" name="type" value={newData.type} onChange={handleInputChange}>Otros</option>
+                </Form.Select>
+
+
+
                 <Form.Group className="mb-3" controlId='description'>
                     <Form.Label>Descripción</Form.Label>
                     <Form.Control type="text" name="description" value={newData.description} onChange={handleInputChange} />
                 </Form.Group>
 
                 <Row>
+
                     <Col>
                         <Form.Group className="mb-3" controlId='type'>
                             <Form.Label>Tipo</Form.Label>
@@ -85,7 +100,20 @@ const NewEventForm = ({ eventFinal }) => {
         </div>
     )
 }
-
+// name: '',
+//     type: '',
+//         description: '',
+//             location: [{
+//                 type: {
+//                     type: String
+//                 },
+//                 coordinates: {
+//                     type: [Number]
+//                 }
+//             }],
+//                 ageGroup: '',
+//                     organizer: loggedUser._id
+//     })
 
 
 export default NewEventForm
