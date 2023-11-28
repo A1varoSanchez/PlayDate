@@ -18,8 +18,8 @@ class UserService {
         })
     }
 
-    addChild(userId) {
-        return this.api.post(`/event/create`, eventData)
+    addChild() {
+        return this.api.post(`/addchild`,)
     }
 }
 

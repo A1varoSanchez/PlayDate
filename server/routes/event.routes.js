@@ -7,7 +7,6 @@ const Event = require('./../models/Event.model')
 
 
 router.post('/create', verifyToken, (req, res, next) => {
-
     const { name, type, description, latitude, longitude, ageGroup, messages } = req.body
     const { _id: organizer } = req.payload
     const location = {
