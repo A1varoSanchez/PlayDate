@@ -21,7 +21,7 @@ const NewEventForm = ({ eventFinal }) => {
             }
         }],
         ageGroup: 3 - 6,
-        organizer: loggedUser._id
+        
     })
 
 
