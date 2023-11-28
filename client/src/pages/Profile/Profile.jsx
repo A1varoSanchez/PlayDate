@@ -4,6 +4,7 @@ import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react'
 import authService from '../../services/auth.services'
 import { useParams } from 'react-router-dom'
+import AddChildForm from '../../components/AddChildForm/AddChildForm'
 
 const Profile = () => {
 
@@ -34,10 +35,12 @@ const Profile = () => {
             <Container>
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
-                        <h1>{profile.username}</h1>
+                        <h1>El perfil de {profile.username}</h1>
                         <hr />
-                        <p>{profile.email}</p>
-                        <p>{profile.aboutUs}</p>
+                        <p><b>Dirección de email: </b>{profile.email}</p>
+                        <p><b>Conoce a mi familia: </b>{profile.aboutUs}</p>
+                        <p><b>Peques: </b> </p>
+                        <AddChildForm />
                     </Col>
                 </Row>
             </Container>

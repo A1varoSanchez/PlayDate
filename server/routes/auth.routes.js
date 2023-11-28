@@ -13,11 +13,6 @@ const saltRounds = 10
 
 router.post('/signup', (req, res, next) => {
     const { username, email, password, aboutUs } = req.body
-<<<<<<< HEAD
-
-=======
-    console.log("----------------------------------", username, email, password, aboutUs)
->>>>>>> 749612d2632705c7322f82145f72d7e387583060
     // const children = {
     //     gender,
     //     birth,
