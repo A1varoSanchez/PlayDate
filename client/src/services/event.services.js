@@ -7,20 +7,25 @@ class EventService {
             baseURL: `${import.meta.env.VITE_API_URL}/event`
         })
         this.api.interceptors.request.use((config) => {
- 
+
             const storedToken = localStorage.getItem("authToken");
-         
+
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-         
+
             return config
         })
-        
+
+    }
+
+
+    getEvents() {
+        return this.api.get('/getAllEvents')
     }
 
     createEvent(eventData) {
-        return this.api.post(`/event/create`, eventData)
+        return this.api.post(`/create`, eventData)
     }
 }
 
