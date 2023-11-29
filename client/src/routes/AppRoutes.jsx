@@ -6,13 +6,14 @@ import Profile from './../pages/Profile/Profile.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
 import EventsPage from './../pages/EventsPage/EventsPage.jsx'
 import EventDetailsPage from './../pages/EventDetailsPage/EventDetailsPage.jsx'
+import HomePage from './../pages/HomePage/HomePage.jsx'
 import UsersPage from '../pages/UsersPage/UserPage.jsx'
 
 const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path={'/'} element={<p>EL INICIO</p>} />
+            <Route path={'/'} element={<HomePage />} />
 
             <Route path={'/registro'} element={<SignUp />} />
             <Route path={'/inicio-sesion'} element={<LoginPage />} />

@@ -1,4 +1,4 @@
-import { Card, Button, Col } from 'react-bootstrap'
+import { Card, Col } from 'react-bootstrap'
 import logo from './../../assets/playdate-logo.png'
 import { Link } from 'react-router-dom'
 
