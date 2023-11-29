@@ -1,4 +1,4 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
 
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react'
@@ -9,6 +9,8 @@ import userservices from '../../services/user.services'
 
 const Profile = () => {
 
+    const [showModal, setShowModal] = useState(false)
+
     const { loggedUser } = useContext(AuthContext)
     const { _id } = useParams()
 
@@ -16,7 +18,7 @@ const Profile = () => {
 
     useEffect(() => {
         loadUser()
-    }, [profile])
+    }, [])
 
     const loadUser = () => {
         if (loggedUser._id === _id) {
@@ -47,15 +49,28 @@ const Profile = () => {
 
                                     return (
                                         <>
-                                            <h5>Peque {i + 1} </h5>
-                                            <p>{calculateAge(elm.birthday)} años</p>
-                                            <p>{elm.gender}</p>
+                                            <p><b>Peque {i + 1}:</b></p>
+                                            <p>Edad: {calculateAge(elm.birthday)} años</p>
+                                            <p>Género: {elm.gender}</p>
                                         </>
                                     )
                                 })
                             }
                         </ul>
-                        <AddChildForm />
+                        <Button variant="secondary" size="sm" onClick={() => setShowModal(true)}>
+                            Añadir hijo/a
+                        </Button>
+
+                        <Modal show={showModal} onHide={() => setShowModal(false)}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Datos del peque</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <AddChildForm refreshProfile={loadUser} setShowModal={setShowModal} />
+                            </Modal.Body>
+                        </Modal>
+
+
                     </Col>
                 </Row>
             </Container>

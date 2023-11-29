@@ -9,7 +9,7 @@ const Navigation = () => {
     return (
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
 
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <img
                     src={logo}
                     height="30"
