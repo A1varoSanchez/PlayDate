@@ -1,5 +1,4 @@
 import { Container, Row, Col } from 'react-bootstrap'
-
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -16,7 +15,7 @@ const Profile = () => {
 
     useEffect(() => {
         loadUser()
-    }, [profile])
+    }, [])
 
     const loadUser = () => {
         if (loggedUser._id === _id) {
