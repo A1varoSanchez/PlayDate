@@ -36,14 +36,16 @@ const getAllUsersHandler = (req, res, next) => {
 }
 
 //ADD FRIEND TO USER PROFILE
-const addFriendHandler = (req, res, next) => {
 
-    const { _id } = req.payload
-    const { friends } = req.body
-    console.log(friends)
-    User
-        .findByIdAndUpdate(_id, { $push: { friends } })
-        .then(response => res.json(response))
+const addFriendHandler = (req, res, next) => {
+    const { friends, loggedId } = req.body;
+
+    Promise.all
+        ([
+            User.findByIdAndUpdate(loggedId, { $addToSet: { friends } }),
+            User.findByIdAndUpdate(friends, { $addToSet: { friends: loggedId } })
+        ])
+        .then(responses => res.json(responses))
         .catch(err => next(err))
 }
 

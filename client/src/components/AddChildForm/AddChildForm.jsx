@@ -44,7 +44,7 @@ const AddChildForm = () => {
                 <Form.Control type="date" name="birthday" value={addChild.children.birthday} onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Select className="mb-3" aria-label="Default select example" name="gender" key={addChild.children._id} value={addChild.children.gender} onChange={handleInputChange}>
+            <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={addChild.children.gender} onChange={handleInputChange}>
                 <option type="text">Selecciona género</option>
                 <option type="text" value="boy">Niño</option>
                 <option type="text" value="girl">Niña</option>

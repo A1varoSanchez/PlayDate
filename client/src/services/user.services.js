@@ -30,10 +30,12 @@ class UserService {
         return this.api.get('/getAllUser')
     }
 
-    addFriend(friends) {
-        return this.api.post('/addFriend', { friends })
+    addFriend(loggedId, friends) {
+        return this.api.post('/addFriend/', { loggedId, friends })
     }
-
+    // body objet 
+    //query : req.query
+    // : req.params
 
 }
 

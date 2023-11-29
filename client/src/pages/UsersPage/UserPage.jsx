@@ -25,44 +25,23 @@ const UsersPage = () => {
             .catch(err => console.log(err))
     }
 
-
-
-    //----------------------------------------------------------------------------------------------------------------
-
-    const { _id } = useParams()
-
     const [addFriend, setAddFriend] = useState({
-        friends: '',
+        friends: [],
     })
 
+    const handleFriendSubmit = (idFriend) => {
 
-    const handleInputChange = e => {
-        const { value, name } = e.currentTarget
-        setAddFriend({ ...addFriend, [name]: value })
+        userservices
+            .addFriend(loggedUser._id, idFriend)
+            .then(({ data }) => {
+                setAddFriend(data)
+            })
+            .catch(err => console.log(err))
     }
-
-    const handleFriendSubmit = e => {
-
-        e.preventDefault()
-
-        if (loggedUser._id === _id) {
-            userservices
-                .addFriend(addFriend.friends)
-                .then(({ data }) => {
-                    console.log('-----------------------------------------servicio')
-                    setAddFriend(data)
-                })
-                .catch(err => console.log(err))
-        }
-    }
-
     return (
         !user ?
-
             <h1>holaaaa</h1>
             :
-
-
             <Container>
                 <h1>usuarios</h1>
                 <hr />
@@ -71,22 +50,14 @@ const UsersPage = () => {
                         return (
                             <div key={elm._id}>
                                 <p>{elm.username}</p>
-                                <Form onSubmit={handleFriendSubmit}>
-                                    <Form.Group className="mb-3" controlId="friends">
-                                        <Form.Label>{elm._id}</Form.Label>
-                                        <Form.Control type="text" value={addFriend.friends} onChange={handleInputChange} name="friends" />
-                                    </Form.Group>
-                                    <div className="d-grid">
-                                        <Button variant="dark" type="submit">Acceder</Button>
-                                    </div>
-                                </Form>
+                                <p>{elm._id}</p>
+
+                                <Button onClick={() => handleFriendSubmit(elm._id)}> ADD FRIEND </Button>
                             </div>
                         )
                     })
-
                 }
             </Container>
-
     )
 }
 
