@@ -28,6 +28,16 @@ router.get('/getAllEvents', (req, res, next) => {
         .catch(err => next(err))
 })
 
+router.get("/getOneEvent/:event_id", (req, res, next) => {
+
+    const { event_id } = req.params
+
+    Event
+        .findById(event_id)
+        .populate('organizer')
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
 
 

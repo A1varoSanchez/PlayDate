@@ -23,7 +23,7 @@ class UserService {
     }
 
     addChild(children) {
-        return this.api.post(`/addchild`, children)
+        return this.api.post("/addchild", children)
     }
 
     getAllUser() {

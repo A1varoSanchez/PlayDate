@@ -4,7 +4,7 @@ import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AddChildForm from '../../components/AddChildForm/AddChildForm'
-import userservices from '../../services/user.services'
+import calculateAge from '../../utils/calculateAge'
 
 const Profile = () => {
 
@@ -15,7 +15,7 @@ const Profile = () => {
 
     useEffect(() => {
         loadUser()
-    }, [_id])
+    }, [profile])
 
     const loadUser = () => {
         if (loggedUser._id === _id) {
@@ -40,6 +40,20 @@ const Profile = () => {
                         <p><b>Dirección de email: </b>{profile.email}</p>
                         <p><b>Conoce a mi familia: </b>{profile.aboutUs}</p>
                         <p><b>Peques: </b> </p>
+                        <ul>
+                            {
+                                profile.children.map((elm, i) => {
+
+                                    return (
+                                        <>
+                                            <h5>Peque {i + 1} </h5>
+                                            <p>{calculateAge(elm.birthday)} años</p>
+                                            <p>{elm.gender}</p>
+                                        </>
+                                    )
+                                })
+                            }
+                        </ul>
                         <AddChildForm />
                     </Col>
                 </Row>
