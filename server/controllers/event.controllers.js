@@ -38,8 +38,19 @@ const oneEventRender = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const joinEventHandler = (req, res, next) => {
+
+    const { eventId, loggedId } = req.body
+
+    Event
+        .findByIdAndUpdate(eventId, { $addToSet: { participants: loggedId } })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+}
+
 module.exports = {
     createEventHandler,
     allEventsRender,
-    oneEventRender
+    oneEventRender,
+    joinEventHandler
 }
