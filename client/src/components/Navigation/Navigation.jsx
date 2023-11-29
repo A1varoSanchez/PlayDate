@@ -9,7 +9,7 @@ const Navigation = () => {
     return (
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
 
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <img
                     src={logo}
                     height="30"
@@ -22,7 +22,7 @@ const Navigation = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Link to={'/'} className='nav-link'>Inicio</Link>
-                    
+
                     <Link to={'/eventos'} className='nav-link'>Eventos</Link>
                     <Link to={'/mapa'} className='nav-link'>Mapa</Link>
                     <Link to={'/crear-evento'} className='nav-link'>Crear evento</Link>
@@ -30,8 +30,8 @@ const Navigation = () => {
                         loggedUser
                             ?
                             <>
-                            <Link to={`/perfil/${loggedUser._id}`} className='nav-link'>Mi perfil</Link>
-                            <span className='nav-link' onClick={logout}>Cerrar sesión</span>
+                                <Link to={`/perfil/${loggedUser._id}`} className='nav-link'>Mi perfil</Link>
+                                <span className='nav-link' onClick={logout}>Cerrar sesión</span>
                             </>
                             :
                             <>
