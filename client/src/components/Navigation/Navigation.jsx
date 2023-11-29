@@ -26,6 +26,7 @@ const Navigation = () => {
                     <Link to={'/eventos'} className='nav-link'>Eventos</Link>
                     <Link to={'/mapa'} className='nav-link'>Mapa</Link>
                     <Link to={'/crear-evento'} className='nav-link'>Crear evento</Link>
+                    <Link to={'/usuarios'} className='nav-link'>usuarios</Link>
                     {
                         loggedUser
                             ?

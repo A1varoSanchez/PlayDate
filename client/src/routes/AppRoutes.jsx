@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute.jsx'
 import EventsPage from './../pages/EventsPage/EventsPage.jsx'
 import EventDetailsPage from './../pages/EventDetailsPage/EventDetailsPage.jsx'
 import HomePage from './../pages/HomePage/HomePage.jsx'
+import UsersPage from '../pages/UsersPage/UserPage.jsx'
 
 const AppRoutes = () => {
 
@@ -22,8 +23,10 @@ const AppRoutes = () => {
             <Route path={'/mapa'} element={<h1>El mapa</h1>} />
 
             <Route element={<PrivateRoute />}>
-                <Route path={'/perfil/:_id'} element={<Profile />} />
+                <Route path={'/usuarios'} element={<UsersPage />} />
                 <Route path={'/crear-evento'} element={<NewEventPage />} />
+
+                <Route path={'/perfil/:_id'} element={<Profile />} />
             </Route>
 
             <Route path={'*'} element={<p>EL ERROR</p>} />

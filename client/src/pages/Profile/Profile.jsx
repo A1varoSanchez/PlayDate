@@ -2,10 +2,10 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react'
-import authService from '../../services/auth.services'
 import { useParams } from 'react-router-dom'
 import AddChildForm from '../../components/AddChildForm/AddChildForm'
 import calculateAge from '../../utils/calculateAge'
+import userservices from '../../services/user.services'
 
 const Profile = () => {
 
@@ -20,7 +20,7 @@ const Profile = () => {
 
     const loadUser = () => {
         if (loggedUser._id === _id) {
-            authService
+            userservices
                 .findUser(_id)
                 .then(({ data }) => {
                     setProfile(data)

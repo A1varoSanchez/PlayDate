@@ -1,48 +1,19 @@
 const router = require('express').Router()
 
-const { verifyToken } = require('../middlewares/verifyToken');
-// const User = require('../models/User.model');
-const Event = require('./../models/Event.model')
+const { verifyToken } = require('../middlewares/verifyToken.guard')
+
+const {
+    createEventHandler,
+    allEventsRender,
+    oneEventRender
+} = require('../controllers/event.controllers')
 
 
+router.post('/create', verifyToken, createEventHandler)
 
-router.post('/create', verifyToken, (req, res, next) => {
-    const { name, type, description, latitude, longitude, ageGroup, messages } = req.body
-    const { _id: organizer } = req.payload
-    const location = {
-        type: 'Point',
-        coordinates: [longitude, latitude]
-    }
+router.get('/getAllEvents', allEventsRender)
 
-    Event
-        .create({ name, type, description, location, ageGroup, messages, organizer })
-        .then(() => res.sendStatus(200))
-        .catch(err => console.log(err))
-})
-
-router.get('/getAllEvents', (req, res, next) => {
-
-    Event
-        .find()
-        .then(response => res.json(response))
-        .catch(err => next(err))
-})
-
-router.get("/getOneEvent/:event_id", (req, res, next) => {
-
-    const { event_id } = req.params
-
-    Event
-        .findById(event_id)
-        .populate('organizer')
-        .then(response => res.json(response))
-        .catch(err => next(err))
-})
-
-
-
+router.get("/getOneEvent/:event_id", oneEventRender)
 
 
 module.exports = router
-
-

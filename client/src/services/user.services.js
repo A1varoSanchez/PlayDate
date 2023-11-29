@@ -18,9 +18,23 @@ class UserService {
         })
     }
 
+    findUser(_id) {
+        return this.api.get(`/perfil/${_id}`)
+    }
+
     addChild(children) {
         return this.api.post("/addchild", children)
     }
+
+    getAllUser() {
+        return this.api.get('/getAllUser')
+    }
+
+    addFriend(friends) {
+        return this.api.post('/addFriend', { friends })
+    }
+
+
 }
 
 const userservices = new UserService()

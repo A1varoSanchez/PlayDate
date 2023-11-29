@@ -22,7 +22,6 @@ const EventDetailsPage = () => {
     }
 
     return (
-
         !event
             ?
             <h1>Cargando...</h1>
@@ -32,7 +31,6 @@ const EventDetailsPage = () => {
                 <h1 className="mb-4">Detalles de {event.name}</h1>
                 <hr />
                 <Row>
-
                     <Col md={{ span: 6, offset: 1 }}>
                         <h3 >Organizadores: {event.organizer?.username}</h3>
                         <h4>Tipo de evento: {event.type}</h4>
@@ -42,13 +40,10 @@ const EventDetailsPage = () => {
 
                         <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link>
                     </Col>
-
                     <Col md={{ span: 4 }}>
                         <img src={logo} style={{ width: '100%' }} />
                     </Col>
-
                 </Row>
-
             </Container >
     )
 }
