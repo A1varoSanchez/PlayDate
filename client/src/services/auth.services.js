@@ -32,9 +32,7 @@ class AuthService {
         )
     }
 
-    findUser(_id) {
-        return this.api.get(`/perfil/${_id}`)
-    }
+
 }
 
 

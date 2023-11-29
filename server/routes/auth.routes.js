@@ -86,17 +86,7 @@ router.get('/verify', verifyToken, (req, res, next) => {
     res.json({ loggedUser })
 })
 
-router.get('/perfil/:id', verifyToken, (req, res, next) => {
 
-    const { _id } = req.payload
-
-    User
-        .findById(_id)
-        .then(response => res.json(response))
-        .catch(err => next(err))
-
-
-})
 
 
 module.exports = router

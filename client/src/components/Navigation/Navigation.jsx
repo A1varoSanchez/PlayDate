@@ -22,16 +22,17 @@ const Navigation = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Link to={'/'} className='nav-link'>Inicio</Link>
-                    
+
                     <Link to={'/eventos'} className='nav-link'>Eventos</Link>
                     <Link to={'/mapa'} className='nav-link'>Mapa</Link>
                     <Link to={'/crear-evento'} className='nav-link'>Crear evento</Link>
+                    <Link to={'/usuarios'} className='nav-link'>usuarios</Link>
                     {
                         loggedUser
                             ?
                             <>
-                            <Link to={`/perfil/${loggedUser._id}`} className='nav-link'>Mi perfil</Link>
-                            <span className='nav-link' onClick={logout}>Cerrar sesión</span>
+                                <Link to={`/perfil/${loggedUser._id}`} className='nav-link'>Mi perfil</Link>
+                                <span className='nav-link' onClick={logout}>Cerrar sesión</span>
                             </>
                             :
                             <>
