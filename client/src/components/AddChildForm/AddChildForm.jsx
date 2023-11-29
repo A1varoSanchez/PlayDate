@@ -5,7 +5,7 @@ import userservices from "../../services/user.services"
 import { Button, Form } from "react-bootstrap"
 
 
-const AddChildForm = () => {
+const AddChildForm = ({ setShowModal, refreshProfile }) => {
 
     const { loggedUser } = useContext(AuthContext)
     const { _id } = useParams()
@@ -31,6 +31,8 @@ const AddChildForm = () => {
                 .addChild(addChild)
                 .then(({ data }) => {
                     setAddChild(data)
+                    setShowModal(false)
+                    refreshProfile()
                 })
                 .catch(err => console.log(err))
         }
@@ -46,8 +48,8 @@ const AddChildForm = () => {
 
             <Form.Select className="mb-3" aria-label="Default select example" name="gender" key={addChild.children._id} value={addChild.children.gender} onChange={handleInputChange}>
                 <option type="text">Selecciona género</option>
-                <option type="text" value="boy">Niño</option>
-                <option type="text" value="girl">Niña</option>
+                <option type="text" value="niño">Niño</option>
+                <option type="text" value="niña">Niña</option>
             </Form.Select>
 
             <div className="d-grid">
