@@ -4,6 +4,7 @@ import EventsCard from '../EventsCard/EventsCard.jsx'
 const EventsList = ({ events }) => {
 
     return (
+        
         !events
             ?
             <h1>Cargando...</h1>

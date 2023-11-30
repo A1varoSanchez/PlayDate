@@ -2,7 +2,7 @@ const { response } = require("express")
 const User = require("../models/User.model")
 
 //USER PROFILE
-const myProfileHandler = (req, res, next) => {
+const myProfile = (req, res, next) => {
 
     const { _id } = req.payload
 
@@ -15,12 +15,10 @@ const myProfileHandler = (req, res, next) => {
 }
 
 //ADD CHILD TO USER PROFILE
-const addChildHandler = (req, res, next) => {
+const addChild = (req, res, next) => {
 
     const { _id } = req.payload
-    const { gender, birthday } = req.body
-
-    const children = { gender, birthday }
+    const children = { gender, birthday } = req.body
 
     User
         .findByIdAndUpdate(_id, { $push: { children } })
@@ -29,7 +27,7 @@ const addChildHandler = (req, res, next) => {
 }
 
 //GET ALL USERS
-const getAllUsersHandler = (req, res, next) => {
+const getAllUsers = (req, res, next) => {
 
     User
         .find()
@@ -38,13 +36,16 @@ const getAllUsersHandler = (req, res, next) => {
 }
 
 //ADD FRIEND TO USER PROFILE
-const addFriendHandler = (req, res, next) => {
-    const { friends, loggedId } = req.body
+const addFriend = (req, res, next) => {
+
+    // TODO: COGER ID DEL LOGGED USER A TYRAVES DEL VERIFYTOKEN Y DE REQ.PAYLOAD
+    const { friends } = req.body
+    const { _id } = req.payload
 
     Promise.all
         ([
-            User.findByIdAndUpdate(loggedId, { $addToSet: { friends } }),
-            User.findByIdAndUpdate(friends, { $addToSet: { friends: loggedId } })
+            User.findByIdAndUpdate(_id, { $addToSet: { friends } }),
+            User.findByIdAndUpdate(friends, { $addToSet: { friends: _id } })
         ])
         .then(responses => res.json(responses))
         .catch(err => next(err))
@@ -52,22 +53,23 @@ const addFriendHandler = (req, res, next) => {
 
 //DELETE FRIEND TO USER PROFILE
 const deleteFriend = (req, res, next) => {
-    const { friendId, loggedId } = req.body
+    const { friendId, } = req.body
+    const { _id } = req.payload
 
     Promise.all
         ([
-            User.findByIdAndUpdate(loggedId, { $pull: { friends: friendId } }),
-            User.findByIdAndUpdate(friendId, { $pull: { friends: loggedId } })
+            User.findByIdAndUpdate(_id, { $pull: { friends: friendId } }),
+            User.findByIdAndUpdate(friendId, { $pull: { friends: _id } })
         ])
         .then(responses => res.json(responses))
         .catch(err => next(err))
 }
 
 module.exports = {
-    myProfileHandler,
-    addChildHandler,
-    getAllUsersHandler,
-    addFriendHandler,
+    myProfile,
+    addChild,
+    getAllUsers,
+    addFriend,
     deleteFriend
 
 }

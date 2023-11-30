@@ -1,4 +1,5 @@
 function calculateAge(birthday) {
+
     const birthdayDate = new Date(birthday)
     const today = new Date()
     const calculation = today - birthdayDate

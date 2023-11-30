@@ -7,53 +7,51 @@ import { AuthContext } from '../../contexts/auth.context'
 const UsersPage = () => {
 
     const { loggedUser } = useContext(AuthContext)
-    const [user, setuser] = useState()
-
-    useEffect(() => {
-        loaduser()
-    }, [])
-
-
-
-    const loaduser = () => {
-        userservices
-            .getAllUser()
-            .then(({ data }) => {
-                setuser(data)
-
-            })
-            .catch(err => console.log(err))
-    }
+    const [user, setUser] = useState()
 
     const [addFriend, setAddFriend] = useState({
         friends: [],
     })
 
-    const handleFriendSubmit = (idFriend) => {
-        userservices
-            .addFriend(loggedUser._id, idFriend)
-            .then(({ data }) => {
-                setAddFriend(data)
-                loaduser()
-            })
-            .catch(err => console.log(err))
-    }
-
     const [deletedFriend, setdeletedFriend] = useState({
         friends: [],
     })
 
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    const loadUser = () => {
+        userservices
+            .getAllUser()
+            .then(({ data }) => {
+                setUser(data)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleFriendSubmit = (idFriend) => {
+        userservices
+            .addFriend(idFriend)
+            .then(({ data }) => {
+                setAddFriend(data)
+                loadUser()
+            })
+            .catch(err => console.log(err))
+    }
+
     const handledeleteSubmit = (friendId) => {
         userservices
-            .deletedFriend(loggedUser._id, friendId)
+            .deletedFriend(friendId)
             .then(({ data }) => {
                 setdeletedFriend(data)
-                loaduser()
+                loadUser()
             })
             .catch(err => console.log(err))
     }
 
     return (
+
         !user ?
             <h1>holaaaa</h1>
             :

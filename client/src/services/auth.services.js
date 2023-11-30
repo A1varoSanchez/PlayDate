@@ -31,8 +31,6 @@ class AuthService {
             { headers: { Authorization: `Bearer ${authToken}` } }
         )
     }
-
-
 }
 
 

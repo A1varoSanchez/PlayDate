@@ -18,8 +18,8 @@ class UserService {
         })
     }
 
-    findUser(_id) {
-        return this.api.get(`/perfil/${_id}`)
+    findUser() {
+        return this.api.get(`/perfil`)
     }
 
     addChild(children) {
@@ -30,18 +30,19 @@ class UserService {
         return this.api.get('/getAllUser')
     }
 
-    addFriend(loggedId, friends) {
-        return this.api.post('/addFriend', { loggedId, friends })
+    addFriend(friends) {
+        return this.api.post('/addFriend', { friends })
     }
 
-    deletedFriend(loggedId, friendId) {
-        return this.api.post('/deletFriend', { loggedId, friendId })
+    deletedFriend(friendId) {
+        return this.api.post('/deletFriend', { friendId })
     }
     // body objet 
     //query : req.query
     // : req.params
 
 }
+
 
 const userservices = new UserService()
 

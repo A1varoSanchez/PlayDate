@@ -37,6 +37,7 @@ class EventService {
     }
 }
 
+
 const eventServices = new EventService()
 
 export default eventServices

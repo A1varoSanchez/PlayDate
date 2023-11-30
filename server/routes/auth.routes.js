@@ -2,15 +2,15 @@ const router = require("express").Router()
 const { verifyToken } = require("../middlewares/verifyToken.guard")
 
 const {
-    createUserHandler,
-    loginHandler,
+    signup,
+    login,
     verifyt
 } = require("../controllers/auth.controllers")
 
 
-router.post('/signup', createUserHandler)
+router.post('/signup', signup)
 
-router.post('/login', loginHandler)
+router.post('/login', login)
 
 router.get('/verify', verifyToken, verifyt)
 

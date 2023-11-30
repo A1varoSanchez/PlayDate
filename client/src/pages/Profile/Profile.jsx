@@ -10,7 +10,6 @@ const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
     const { loggedUser } = useContext(AuthContext)
-    const { _id } = useParams()
 
     const [profile, setProfile] = useState(null)
 
@@ -19,16 +18,16 @@ const Profile = () => {
     }, [])
 
     const loadUser = () => {
-        if (loggedUser._id === _id) {
-            userservices
-                .findUser(_id)
-                .then(({ data }) => {
-                    setProfile(data)
-                })
-        }
+        userservices
+            .findUser()
+            .then(({ data }) => {
+                setProfile(data)
+            })
+            .catch(err => console.log(err))
     }
 
     return (
+
         !profile
             ?
             <h1>Cargando...</h1>
@@ -73,12 +72,11 @@ const Profile = () => {
                                 <AddChildForm refreshProfile={loadUser} setShowModal={setShowModal} />
                             </Modal.Body>
                         </Modal>
-
-
                     </Col>
                 </Row>
             </Container>
     )
 }
+
 
 export default Profile
