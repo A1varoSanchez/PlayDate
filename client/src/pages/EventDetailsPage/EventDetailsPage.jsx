@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import eventServices from "../../services/event.services"
 import { Link, useParams } from "react-router-dom"
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row, Button } from "react-bootstrap"
 import logo from './../../assets/playdate-logo.png'
+import { AuthContext } from "../../contexts/auth.context"
 
 const EventDetailsPage = () => {
 
     const { event_id } = useParams()
+
+    const { loggedUser } = useContext(AuthContext)
 
     const [event, setEvent] = useState({})
 
@@ -18,6 +21,21 @@ const EventDetailsPage = () => {
         eventServices
             .getEventDetails(event_id)
             .then(({ data }) => setEvent(data))
+            .catch(err => console.log(err))
+    }
+
+    const [joinEvent, setJoinEvent] = useState({
+        participants: []
+    })
+    console.log("-----------------------------------------------------------front1")
+    const handleJoinEvent = (event_id) => {
+        console.log(event_id)
+        eventServices
+            .joinEvent(loggedUser._id, event_id)
+            .then(({ data }) => {
+                console.log("********************************************front2")
+                setJoinEvent(data)
+            })
             .catch(err => console.log(err))
     }
 
@@ -44,6 +62,8 @@ const EventDetailsPage = () => {
                         <img src={logo} style={{ width: '100%' }} />
                     </Col>
                 </Row>
+                {/* <p>{event._id}</p> */}
+                <Button onClick={() => handleJoinEvent(event._id)}>Unirme</Button>
             </Container >
     )
 }
