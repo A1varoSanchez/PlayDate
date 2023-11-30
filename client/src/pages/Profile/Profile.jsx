@@ -1,5 +1,4 @@
 import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
-
 import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -10,9 +9,8 @@ import userservices from '../../services/user.services'
 const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
-
     const { loggedUser } = useContext(AuthContext)
-    const { _id } = useParams()
+    const { _id } = useParams() = useState(null)
 
     const [profile, setProfile] = useState(null)
 
@@ -54,6 +52,12 @@ const Profile = () => {
                                             <p>Género: {elm.gender}</p>
                                         </>
                                     )
+                                })
+                            }
+                            <h3>Amigos</h3>
+                            {
+                                profile.friends.map(elm => {
+                                    return (<p>{elm.username}</p>)
                                 })
                             }
                         </ul>

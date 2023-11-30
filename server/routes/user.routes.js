@@ -5,7 +5,8 @@ const {
     myProfileHandler,
     addChildHandler,
     getAllUsersHandler,
-    addFriendHandler
+    addFriendHandler,
+    deleteFriend
 } = require("../controllers/user.controllers")
 
 
@@ -16,6 +17,8 @@ router.post('/addchild', verifyToken, addChildHandler)
 router.get('/getAllUser', getAllUsersHandler)
 
 router.post('/addFriend', verifyToken, addFriendHandler)
+
+router.post('/deletFriend', verifyToken, deleteFriend)
 
 
 module.exports = router

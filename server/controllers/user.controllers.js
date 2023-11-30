@@ -1,3 +1,4 @@
+const { response } = require("express")
 const User = require("../models/User.model")
 
 //USER PROFILE
@@ -7,6 +8,7 @@ const myProfileHandler = (req, res, next) => {
 
     User
         .findById(_id)
+        .populate('friends')
         .then(response => res.json(response))
         .catch(err => next(err))
 
@@ -36,9 +38,8 @@ const getAllUsersHandler = (req, res, next) => {
 }
 
 //ADD FRIEND TO USER PROFILE
-
 const addFriendHandler = (req, res, next) => {
-    const { friends, loggedId } = req.body;
+    const { friends, loggedId } = req.body
 
     Promise.all
         ([
@@ -49,9 +50,24 @@ const addFriendHandler = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const deleteFriend = (req, res, next) => {
+    const { friendId, loggedId } = req.body
+
+    Promise.all
+        ([
+            User.findByIdAndUpdate(loggedId, { $pull: { friends: friendId } }),
+            User.findByIdAndUpdate(friendId, { $pull: { friends: loggedId } })
+        ])
+        .then(responses => res.json(responses))
+        .catch(err => next(err))
+}
+
+
 module.exports = {
     myProfileHandler,
     addChildHandler,
     getAllUsersHandler,
-    addFriendHandler
+    addFriendHandler,
+    deleteFriend
+
 }

@@ -31,7 +31,11 @@ class UserService {
     }
 
     addFriend(loggedId, friends) {
-        return this.api.post('/addFriend/', { loggedId, friends })
+        return this.api.post('/addFriend', { loggedId, friends })
+    }
+
+    deletedFriend(loggedId, friendId) {
+        return this.api.post('/deletFriend', { loggedId, friendId })
     }
     // body objet 
     //query : req.query
