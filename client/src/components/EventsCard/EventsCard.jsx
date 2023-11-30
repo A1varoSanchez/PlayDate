@@ -3,7 +3,9 @@ import logo from './../../assets/playdate-logo.png'
 import { Link } from 'react-router-dom'
 
 const EventsCard = ({ _id, name, type, ageGroup }) => {
+
     return (
+        
         <>
             <Col lg={{ span: 3 }} md={{ span: 6 }}>
                 <article>

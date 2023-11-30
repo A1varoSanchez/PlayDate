@@ -5,8 +5,11 @@ import { useContext } from 'react'
 import logo from './../../assets/playdate-logo.png'
 
 const Navigation = () => {
+
     const { loggedUser, logout } = useContext(AuthContext)
+
     return (
+
         <Navbar bg="dark" data-bs-theme="dark" className='mb-5' expand="lg">
 
             <Navbar.Brand href="/">
@@ -46,10 +49,9 @@ const Navigation = () => {
                     {loggedUser && <Navbar.Text>Bienvenido {loggedUser.username}</Navbar.Text>}
                 </Navbar.Text>
             </Navbar.Collapse>
-
         </Navbar>
-
     )
 }
+
 
 export default Navigation

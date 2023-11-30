@@ -3,20 +3,20 @@ const router = require('express').Router()
 const { verifyToken } = require('../middlewares/verifyToken.guard')
 
 const {
-    createEventHandler,
-    allEventsRender,
-    oneEventRender,
-    joinEventHandler
+    createEvent,
+    allEvents,
+    oneEvent,
+    joinEvent
 } = require('../controllers/event.controllers')
 
 
-router.post('/create', verifyToken, createEventHandler)
+router.post('/create', verifyToken, createEvent)
 
-router.get('/getAllEvents', allEventsRender)
+router.get('/getAllEvents', allEvents)
 
-router.get("/getOneEvent/:event_id", oneEventRender)
+router.get("/getOneEvent/:event_id", oneEvent)
 
-router.post("/joinEvent", verifyToken, joinEventHandler)
+router.post("/joinEvent", verifyToken, joinEvent)
 
 
 module.exports = router

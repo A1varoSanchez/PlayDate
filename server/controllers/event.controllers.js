@@ -1,8 +1,9 @@
 const Event = require('./../models/Event.model')
 
+// TODO: REVISAR POSIBILIDADES DE SELECT Y SORT
 
 //CREATE EVENT
-const createEventHandler = (req, res, next) => {
+const createEvent = (req, res, next) => {
 
     const { name, type, description, latitude, longitude, ageGroup, messages } = req.body
     const { _id: organizer } = req.payload
@@ -14,11 +15,11 @@ const createEventHandler = (req, res, next) => {
     Event
         .create({ name, type, description, location, ageGroup, messages, organizer })
         .then(() => res.sendStatus(200))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 }
 
 //DISPLAY ALL EVENTS
-const allEventsRender = (req, res, next) => {
+const allEvents = (req, res, next) => {
 
     Event
         .find()
@@ -27,7 +28,7 @@ const allEventsRender = (req, res, next) => {
 }
 
 //EVENT DETAILS
-const oneEventRender = (req, res, next) => {
+const oneEvent = (req, res, next) => {
 
     const { event_id } = req.params
 
@@ -38,19 +39,19 @@ const oneEventRender = (req, res, next) => {
         .catch(err => next(err))
 }
 
-const joinEventHandler = (req, res, next) => {
+const joinEvent = (req, res, next) => {
 
-    const { eventId, loggedId } = req.body
+    const { eventId, loggedId: participants } = req.body
 
     Event
-        .findByIdAndUpdate(eventId, { $addToSet: { participants: loggedId } })
+        .findByIdAndUpdate(eventId, { $addToSet: { participants } })
         .then(response => res.json(response))
         .catch(err => next(err))
 }
 
 module.exports = {
-    createEventHandler,
-    allEventsRender,
-    oneEventRender,
-    joinEventHandler
+    createEvent,
+    allEvents,
+    oneEvent,
+    joinEvent
 }

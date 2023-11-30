@@ -1,16 +1,11 @@
-import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../../contexts/auth.context"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
 import userservices from "../../services/user.services"
 import { Button, Form } from "react-bootstrap"
 
 
 const AddChildForm = ({ setShowModal, refreshProfile }) => {
 
-    const { loggedUser } = useContext(AuthContext)
-    const { _id } = useParams()
-
-    const [addChild, setAddChild] = useState({
+    const [childInfo, setChildInfo] = useState({
         children: [{
             gender: '',
             birth: ''
@@ -19,23 +14,21 @@ const AddChildForm = ({ setShowModal, refreshProfile }) => {
 
     const handleInputChange = e => {
         const { value, name } = e.currentTarget
-        setAddChild({ ...addChild, [name]: value })
+        setChildInfo({ ...childInfo, [name]: value })
     }
 
     const handleEventSubmit = e => {
 
         e.preventDefault()
 
-        if (loggedUser._id === _id) {
-            userservices
-                .addChild(addChild)
-                .then(({ data }) => {
-                    setAddChild(data)
-                    setShowModal(false)
-                    refreshProfile()
-                })
-                .catch(err => console.log(err))
-        }
+        userservices
+            .addChild(childInfo)
+            .then(({ data }) => {
+                setChildInfo(data)
+                setShowModal(false)
+                refreshProfile()
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -43,10 +36,10 @@ const AddChildForm = ({ setShowModal, refreshProfile }) => {
         <Form onSubmit={handleEventSubmit}>
             <Form.Group className="mb-3" controlId="birthday">
                 <Form.Label>Fecha de nacimiento</Form.Label>
-                <Form.Control type="date" name="birthday" value={addChild.children.birthday} onChange={handleInputChange} />
+                <Form.Control type="date" name="birthday" value={childInfo.children.birthday} onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={addChild.children.gender} onChange={handleInputChange}>
+            <Form.Select className="mb-3" aria-label="Default select example" name="gender" value={childInfo.children.gender} onChange={handleInputChange}>
                 <option type="text">Selecciona género</option>
                 <option type="text" value="niño">Niño</option>
                 <option type="text" value="niña">Niña</option>
@@ -56,8 +49,6 @@ const AddChildForm = ({ setShowModal, refreshProfile }) => {
                 <Button variant="dark" type="submit">Añadir hijo/a</Button>
             </div>
         </Form>
-
-
     )
 }
 

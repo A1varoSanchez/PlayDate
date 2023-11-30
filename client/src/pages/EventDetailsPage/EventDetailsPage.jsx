@@ -13,6 +13,10 @@ const EventDetailsPage = () => {
 
     const [event, setEvent] = useState({})
 
+    const [joinEvent, setJoinEvent] = useState({
+        participants: []
+    })
+
     useEffect(() => {
         loadEventDetails()
     }, [])
@@ -24,22 +28,17 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const [joinEvent, setJoinEvent] = useState({
-        participants: []
-    })
-    console.log("-----------------------------------------------------------front1")
     const handleJoinEvent = (event_id) => {
-        console.log(event_id)
         eventServices
             .joinEvent(loggedUser._id, event_id)
             .then(({ data }) => {
-                console.log("********************************************front2")
                 setJoinEvent(data)
             })
             .catch(err => console.log(err))
     }
 
     return (
+
         !event
             ?
             <h1>Cargando...</h1>
@@ -62,10 +61,10 @@ const EventDetailsPage = () => {
                         <img src={logo} style={{ width: '100%' }} />
                     </Col>
                 </Row>
-                {/* <p>{event._id}</p> */}
                 <Button onClick={() => handleJoinEvent(event._id)}>Unirme</Button>
             </Container >
     )
 }
+
 
 export default EventDetailsPage

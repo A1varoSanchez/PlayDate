@@ -7,7 +7,7 @@ const saltRounds = 10
 
 
 //SIGNUP
-const createUserHandler = (req, res, next) => {
+const signup = (req, res, next) => {
     const { username, email, password, aboutUs } = req.body
 
     if (password.length < 2) {
@@ -35,7 +35,7 @@ const createUserHandler = (req, res, next) => {
 }
 
 //LOGIN
-const loginHandler = (req, res, next) => {
+const login = (req, res, next) => {
     const { email, password } = req.body
 
     if (email === '' || password === '') {
@@ -81,7 +81,7 @@ const verifyt = (req, res, next) => {
 
 module.exports =
 {
-    createUserHandler,
-    loginHandler,
+    signup,
+    login,
     verifyt,
 }

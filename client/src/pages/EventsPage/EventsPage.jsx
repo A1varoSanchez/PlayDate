@@ -16,7 +16,6 @@ const EventsPage = () => {
         eventServices
             .getEvents()
             .then(({ data }) => setEvents(data))
-
             .catch(err => console.log(err))
     }
 
