@@ -38,7 +38,7 @@ const getAllUsersHandler = (req, res, next) => {
 //ADD FRIEND TO USER PROFILE
 
 const addFriendHandler = (req, res, next) => {
-    const { friends, loggedId } = req.body;
+    const { friends, loggedId } = req.body
 
     Promise.all
         ([
@@ -48,6 +48,7 @@ const addFriendHandler = (req, res, next) => {
         .then(responses => res.json(responses))
         .catch(err => next(err))
 }
+
 
 module.exports = {
     myProfileHandler,
