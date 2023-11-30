@@ -50,6 +50,7 @@ const addFriendHandler = (req, res, next) => {
         .catch(err => next(err))
 }
 
+<<<<<<< HEAD
 const deleteFriend = (req, res, next) => {
     const { friendId, loggedId } = req.body
 
@@ -62,6 +63,8 @@ const deleteFriend = (req, res, next) => {
         .catch(err => next(err))
 }
 
+=======
+>>>>>>> 7f29edd499bc97842c19467f8f7e1ffff693684d
 
 module.exports = {
     myProfileHandler,

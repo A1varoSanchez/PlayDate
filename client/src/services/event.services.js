@@ -20,7 +20,7 @@ class EventService {
     }
 
     getEvents() {
-        return this.api.get('/getAllEvents')
+        return this.api.get("/getAllEvents")
     }
 
     getEventDetails(event_id) {
@@ -28,8 +28,12 @@ class EventService {
     }
 
     createEvent(eventData) {
-        return this.api.post(`/create`, eventData)
+        return this.api.post("/create", eventData)
 
+    }
+
+    joinEvent(loggedId, eventId) {
+        return this.api.post("/joinEvent", { loggedId, eventId })
     }
 }
 
