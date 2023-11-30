@@ -51,7 +51,11 @@ const addFriend = (req, res, next) => {
         .catch(err => next(err))
 }
 
+<<<<<<< HEAD
 //DELETE FRIEND TO USER PROFILE
+=======
+//DELETED FRIEND TO USER PROFILE
+>>>>>>> alvaro
 const deleteFriend = (req, res, next) => {
     const { friendId, } = req.body
     const { _id } = req.payload
@@ -65,6 +69,10 @@ const deleteFriend = (req, res, next) => {
         .catch(err => next(err))
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> alvaro
 module.exports = {
     myProfile,
     addChild,

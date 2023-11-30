@@ -10,6 +10,10 @@ const Profile = () => {
 
     const [showModal, setShowModal] = useState(false)
     const { loggedUser } = useContext(AuthContext)
+<<<<<<< HEAD
+=======
+    const { _id } = useParams()
+>>>>>>> alvaro
 
     const [profile, setProfile] = useState(null)
 

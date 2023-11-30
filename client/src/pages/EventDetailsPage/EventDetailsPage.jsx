@@ -28,6 +28,12 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+<<<<<<< HEAD
+=======
+    const [joinEvent, setJoinEvent] = useState({
+        participants: []
+    })
+>>>>>>> alvaro
     const handleJoinEvent = (event_id) => {
         eventServices
             .joinEvent(loggedUser._id, event_id)
@@ -54,7 +60,6 @@ const EventDetailsPage = () => {
                         <h4>Edad recomendada: {event.ageGroup} años</h4>
                         <h4>Plan: {event.description}</h4>
                         <hr />
-
                         <Link to="/eventos" className="btn btn-dark">Volver a los eventos</Link>
                     </Col>
                     <Col md={{ span: 4 }}>
